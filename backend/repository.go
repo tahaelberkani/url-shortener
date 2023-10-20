@@ -12,7 +12,7 @@ func (b *basicRepository) postUrlShortend(shortUrl string, longUrl string) error
 }
 
 func (b *basicRepository) getLongUrl(shortUrl string) (longUrl string, err error) {
-	result, _ := b.db[shortUrl]
+	result := b.db[shortUrl]
 	return result, nil
 }
 
