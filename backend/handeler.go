@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"io"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -28,14 +28,11 @@ func (h *chiHttpServer) Run() {
 }
 
 func (s *chiHttpServer) shortenUrl(w http.ResponseWriter, r *http.Request) {
-	jsonData, _ := r.GetBody
-
-	_ = json.Unmarshal([]byte(jsonData), &data)
-	if err != nil {
-		fmt.Printf("could not unmarshal json: %s\n", err)
-		return
-	}
-	w.Write([]byte("Hello World!"))
+	jsonData, _ := io.ReadAll(r.Body)
+	var url string
+	_ = json.Unmarshal(jsonData, &url)
+	shortUrl, _ := s.serv.shortendUrl(url)
+	json.NewEncoder(w).Encode(shortUrl)
 }
 
 func (s *chiHttpServer) getUrl(w http.ResponseWriter, r *http.Request) {
