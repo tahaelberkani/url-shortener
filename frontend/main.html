@@ -22,10 +22,18 @@
         <p id="characterCount1" class="grey" >
             write something to get a count of caracters.
         </p>
+        <p class="invisible firstInvisible">your sorten url</p>
+        <a id="shortUrl" href="" class="invisible firstInvisible" ></a>
+        <p id="characterCount2" class="invisible firstInvisible grey" >the new url is 10 characters long</p>
+
         <div class="filler" ></div>
-        <button class="right" >shorten</button>
+        <button id="butonCopy" class="left invisible" >copy</button>
+        <button id="butonReturn" class="right invisible firstInvisible" onclick="reloadPage()" >shorten anoder url</button>
+        <button id="butonShorten" class="right secondInvisible" onclick="sendAndUpdatePage()" >shorten</button>
     </div>
     
+
+
     <img id="solidCircle1" src="svg/solidcircle1.svg" alt="circle with blue linear gradien">
     <img id="solidCircle2" src="svg/solidcircle2.svg" alt="circle with blue linear gradien">
     <img id="solidCircle3" src="svg/solidcircle3.svg" alt="circle with blue linear gradien">

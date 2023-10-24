@@ -85,7 +85,7 @@ h3  {
     font-weight: 300;
     margin-bottom: 2rem;
 }
-p, label, input {
+p, label, input, a {
     font-family: 'Inter', sans-serif;
     font-size: 1.5em;
     padding: 1rem;
@@ -124,6 +124,9 @@ button {
     font-size: 1.5em;
     padding: 0.5rem;
     font-weight: 400;
+}
+
+.right {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -138,3 +141,9 @@ button:hover {
 
 /* card */
 
+
+
+
+.invisible {
+    display: none;
+}
