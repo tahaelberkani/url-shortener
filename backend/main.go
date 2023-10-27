@@ -14,10 +14,13 @@ import (
 var db = map[string]string{}
 
 func main() {
+	fs := http.FileServer(http.Dir("static"))
+
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
-	r.Post("/", shortenUrl)
-	r.Get("/{shortUrl}", getUrl)
+	r.Post("/api/", shortenUrl)
+	r.Get("/api/{shortUrl}", getUrl)
+	r.Handle("/*", fs)
 	http.ListenAndServe(":3000", r)
 }
 
@@ -31,6 +34,7 @@ func shortenUrl(w http.ResponseWriter, r *http.Request) {
 	_ = json.Unmarshal(jsonData, &url)
 	shortUrl := randStringBytes(6)
 	db[shortUrl] = url.Url
+	fmt.Println(db)
 	w.Header().Set("content-type", "application/json")
 	json.NewEncoder(w).Encode(postRequest{Url: shortUrl})
 	fmt.Println(db)

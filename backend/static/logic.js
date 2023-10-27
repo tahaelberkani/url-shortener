@@ -11,8 +11,8 @@ function updateLongUrlCharacterCount() {
 }
 
 async function sendAndUpdatePage() {
-    var backend = "http://192.168.1.139:3000"
-//    var longUrl = document.getElementById('longUrl').value;
+    var backend = "http://localhost:3000/api/"
+    var longUrl = document.getElementById('longUrl').value;
     const response = await fetch(backend, {
       method: "POST",
       headers: {
@@ -42,8 +42,8 @@ function updatepage(shortUrl) {
     for (let item of list2) {
         item.classList.add("invisible")
     }
-    document.getElementById("shortUrl").innerHTML = shortUrl
-    document.getElementById("shortUrl").setAttribute("href", shortUrl)
+    document.getElementById("shortUrl").innerHTML = "http://localhost:3000/api/" + shortUrl
+    document.getElementById("shortUrl").setAttribute("href", "http://localhost:3000/api/" + shortUrl)
     var length = shortUrl.length;
     var displayText = 'this url is ' + length + ' characters long'
     console.log(displayText);
