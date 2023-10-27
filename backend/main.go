@@ -31,7 +31,8 @@ func shortenUrl(w http.ResponseWriter, r *http.Request) {
 	_ = json.Unmarshal(jsonData, &url)
 	shortUrl := randStringBytes(6)
 	db[shortUrl] = url.Url
-	json.NewEncoder(w).Encode(shortUrl)
+	w.Header().Set("content-type", "application/json")
+	json.NewEncoder(w).Encode(postRequest{Url: shortUrl})
 	fmt.Println(db)
 }
 

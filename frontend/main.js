@@ -10,9 +10,30 @@ function updateLongUrlCharacterCount() {
     }
 }
 
-function sendAndUpdatePage() {
-    var longUrl = document.getElementById('longUrl').value;
-    var shortUrl = "https://bitly.com/";
+async function sendAndUpdatePage() {
+    var backend = "http://192.168.1.139:3000"
+//    var longUrl = document.getElementById('longUrl').value;
+    const response = await fetch(backend, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        url: longUrl
+      }),
+    });
+    console.log("aaa")
+    console.log(response)
+    const data = await response.json();
+    console.log(data)
+    const {url} = data;
+    updatepage(url)
+//    const data = await response.json();
+
+}
+
+
+function updatepage(shortUrl) {
     var list = document.getElementsByClassName("firstInvisible");
     for (let item of list) {
         item.classList.remove("invisible")
