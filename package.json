@@ -1,0 +1,34 @@
+{
+  "name": "url_shortener",
+  "version": "1.0.0",
+  "description": "A url shortening service.",
+  "keywords": [
+    "mongodb",
+    "node.js",
+    "express.js",
+    "url shortener",
+    "http",
+    "validation"
+  ],
+  "author": "Bernard Major",
+  "license": "MIT",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon backend/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "http": "^0.0.1-security",
+    "mongodb": "^6.2.0",
+    "mongoose": "^7.6.4",
+    "randomstring": "^1.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
