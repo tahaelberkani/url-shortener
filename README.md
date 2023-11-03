@@ -4,14 +4,24 @@ A URL shortening service built with Node.js, Express.js, and MongoDB.
 
 ## Description
 
-This project provides a simple URL shortening service that allows users to generate shortened URLs for long web addresses. It utilizes a MongoDB database to store the original and shortened URLs.
+This project provides a simple URL shortening service that allows users to generate shortened URLs for long web addresses. It utilizes a MongoDB database to store the original and shortened URLs. A user can navigate to the shortened URL and access the original longer web address, location. Enjoy! 
 
-### Sample Response
+Note: This database is purged daily.
+
+### Sample Request Body
 
 {
-    "url": "http://short-url.com",
-    "code": "ORv8xJ0",
-    "_id": "6540a7e1d25h8822f3f77f5"
+    "url": "https://www.youtube.com/watch?v=khPrXEEEp6E"
+}
+
+### Sample Response Body
+
+{
+    "originalUrl": "https://www.youtube.com/watch?v=khPrXEEEp6E",
+    "shortCode": "krjpLf1",
+    "newUrl": "http://localhost:8001/krjpLf1",
+    "_id": "6544857c79d15c8a38ff12e4",
+    "__v": 0
 }
 
 ## Installation

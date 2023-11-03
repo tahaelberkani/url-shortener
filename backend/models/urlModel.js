@@ -9,6 +9,10 @@ const urlSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  newUrl: {
+    type: String,
+    required: true,
+  },
 });
 
 export const Url = mongoose.model('Url', urlSchema);

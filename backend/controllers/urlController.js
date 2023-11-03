@@ -9,13 +9,15 @@ export const checkHealth = async (req, res) => {
 // Controller function to create a shortened URL
 export const createShortUrl = async (req, res) => {
   try {
-    const originalUrl = "http://short-url.com";
+    const originalUrl = req.body.url; // Assuming the URL is sent in the request body as 'url'
     const shortCode = randomstring.generate(7);
-    const newUrl = new Url({ originalUrl, shortCode });
-    await newUrl.save(); // Save the new URL to the database
-    res.status(201).json(newUrl); // Return the newly created URL
+    const serverUrl = `${req.protocol}://${req.get('host')}`; // Extracting the server domain from the request object
+    const newUrl = `${serverUrl}/${shortCode}`;
+    const shortenedUrl = new Url({ originalUrl, shortCode, newUrl });
+    await shortenedUrl.save(); // Save the new URL to the database
+    res.status(201).json(shortenedUrl); // Return the newly created URL
   } catch (error) {
-    res.status(500).json({ message: 'Server Error' }); // Handle server errors
+    res.status(500).json({ message: 'Server Error' }); 
   }
 };
 
@@ -29,6 +31,6 @@ export const redirectShortUrl = async (req, res) => {
     }
     res.redirect(url.originalUrl); // Redirect to the original URL
   } catch (error) {
-    res.status(500).json({ message: 'Server Error' }); // Handle server errors
+    res.status(500).json({ message: 'Server Error' }); 
   }
 };
